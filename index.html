@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Convert upper-case to lower-case and copy to clipboard</h2>
+
+<p>Just insert the text in the area and press the button:</p>
+
+<p id="demo"></p>
+<p>
+  <button class="js-textareacopybtn" style="vertical-align:top;">Copy Textarea</button>
+  <textarea class="js-copytextarea">Hello I'm some text</textarea>
+</p>
+<script>
+var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+copyTextareaBtn.addEventListener('click', function(event) {
+  var copyTextarea = document.querySelector('.js-copytextarea');
+  copyTextarea.value = copyTextarea.value.toLowerCase();
+  copyTextarea.focus();
+  copyTextarea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+});
+
+</script>
+
+</body>
+</html>
